@@ -10,8 +10,7 @@ module.exports = function (Avaliacao) {
 
   Avaliacao.getUltimasAvaliacoes = async function () {
     const collection = Avaliacao.getConnector().collection('Avaliacao');
-        const cursor = collection.aggregate({
-      aggregate: [
+        const cursor = collection.aggregate([
         {
           $lookup: {
             from: "Colaborador",
@@ -50,8 +49,7 @@ module.exports = function (Avaliacao) {
             },
           },
         },
-      ],
-    });
+      ]);
     return cursor.toArray();
   };
 
@@ -69,8 +67,7 @@ module.exports = function (Avaliacao) {
 
   Avaliacao.getResumoHipertensao = async function () {
     const collection = Avaliacao.getConnector().collection('Avaliacao');
-        const cursor = collection.aggregate({
-      aggregate: [
+        const cursor = collection.aggregate([
         {
           $lookup: {
             from: "Colaborador",
@@ -117,8 +114,7 @@ module.exports = function (Avaliacao) {
             y: "$count",
           },
         },
-      ],
-    });
+      ]);
     return cursor.toArray();
   };
 
@@ -137,8 +133,7 @@ module.exports = function (Avaliacao) {
 
   Avaliacao.getNumAvaliacoes = async function () {
     const collection = Avaliacao.getConnector().collection('Avaliacao');
-    const cursor = collection.aggregate({
-      aggregate: [
+    const cursor = collection.aggregate([
         {
           $facet: {
             anual: [
@@ -219,8 +214,7 @@ module.exports = function (Avaliacao) {
             ],
           },
         },
-      ],
-    });
+      ]);
     return cursor.toArray();
   };
 
