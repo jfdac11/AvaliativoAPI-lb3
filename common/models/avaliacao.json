@@ -21,6 +21,11 @@
     "dataHora": {
       "type": "date",
       "required": true
+    },
+    "colaborador":{
+      "type": "string",
+      "required": true,
+     " mongodb": {"dataType": "ObjectID"}
     }
   },
   "validations": [],
