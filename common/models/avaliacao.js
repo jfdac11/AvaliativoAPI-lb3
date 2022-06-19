@@ -9,7 +9,8 @@ module.exports = function (Avaliacao) {
   //get ultima avaliação de cada colaborador (Array) (ok)
 
   Avaliacao.getUltimasAvaliacoes = async function () {
-    return Avaliacao.aggregate({
+    const collection = Avaliacao.getConnector().collection('Avaliacao');
+        const cursor = collection.aggregate({
       aggregate: [
         {
           $lookup: {
@@ -50,13 +51,8 @@ module.exports = function (Avaliacao) {
           },
         },
       ],
-    })
-      .then(function (avaliacoes) {
-        return Promise.resolve(avaliacoes);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    });
+    return cursor.toArray();
   };
 
   Avaliacao.remoteMethod("getUltimasAvaliacoes", {
@@ -72,7 +68,8 @@ module.exports = function (Avaliacao) {
   });
 
   Avaliacao.getResumoHipertensao = async function () {
-    return Avaliacao.aggregate({
+    const collection = Avaliacao.getConnector().collection('Avaliacao');
+        const cursor = collection.aggregate({
       aggregate: [
         {
           $lookup: {
@@ -121,13 +118,8 @@ module.exports = function (Avaliacao) {
           },
         },
       ],
-    })
-      .then(function (res) {
-        return Promise.resolve(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    });
+    return cursor.toArray();
   };
 
   Avaliacao.remoteMethod("getResumoHipertensao", {
@@ -144,7 +136,8 @@ module.exports = function (Avaliacao) {
   });
 
   Avaliacao.getNumAvaliacoes = async function () {
-    return Avaliacao.aggregate({
+    const collection = Avaliacao.getConnector().collection('Avaliacao');
+    const cursor = collection.aggregate({
       aggregate: [
         {
           $facet: {
@@ -227,13 +220,8 @@ module.exports = function (Avaliacao) {
           },
         },
       ],
-    })
-      .then(function (res) {
-        return Promise.resolve(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    });
+    return cursor.toArray();
   };
 
   Avaliacao.remoteMethod("getNumAvaliacoes", {
