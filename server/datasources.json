@@ -1,6 +1,13 @@
 {
   "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb+srv://maria:0@cluster0.wfhxqlm.mongodb.net/test",
+    "database": "desafio-2",
+    "password": "0",
     "name": "db",
-    "connector": "memory"
+    "user": "maria",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
   }
 }
