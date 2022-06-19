@@ -1,5 +1,5 @@
 # Check out https://hub.docker.com/_/node to select a new base image
-FROM node:10-slim
+FROM node:10
 # Set to a non-root built-in user `node`
 USER node
 # Create app directory (with user `node`)
@@ -15,4 +15,4 @@ COPY --chown=node . .
 #RUN npm run build
 # Bind to all network interfaces so that it can be mapped to the host OS
 
-CMD ["npm","start"]
+CMD ["npm","start","--port=3001"]

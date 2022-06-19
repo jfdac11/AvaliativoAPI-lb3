@@ -6,7 +6,7 @@ services:
             context: .
             dockerfile: Dockerfile
         ports: 
-            - 3000:3002
-        command: npm start
+            - 3001:3001
+        command: npm start --port=3001
         volumes: 
             - .:/app
