@@ -14,7 +14,7 @@ module.exports = function (Avaliacao) {
         {
           $lookup: {
             from: "Colaborador",
-            localField: "ColaboradorId",
+            localField: "colaborador",
             foreignField: "_id",
             as: "colaborador",
           },
@@ -31,7 +31,7 @@ module.exports = function (Avaliacao) {
         },
         {
           $group: {
-            _id: "$ColaboradorId",
+            _id: "$colaborador",
             dataUltima: {
               $max: "$dataHora",
             },
@@ -71,7 +71,7 @@ module.exports = function (Avaliacao) {
         {
           $lookup: {
             from: "Colaborador",
-            localField: "ColaboradorId",
+            localField: "colaborador",
             foreignField: "_id",
             as: "colaborador",
           },
@@ -88,7 +88,7 @@ module.exports = function (Avaliacao) {
         },
         {
           $group: {
-            _id: "$ColaboradorId",
+            _id: "$colaborador",
             dataUltima: {
               $max: "$dataHora",
             },
